@@ -1,0 +1,6 @@
+@Horoscope.Api_HostAddress = http://localhost:5092
+
+GET {{Horoscope.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
