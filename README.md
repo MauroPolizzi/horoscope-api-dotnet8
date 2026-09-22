@@ -58,12 +58,12 @@ Edita el archivo **`appsettings.json`** del proyecto **Horoscope.Api** y ajusta 
 
 ### 4️⃣ Aplicar migraciones existentes
 
-> ⚠️ Asegúrate de que el proyecto **Horoscope.Infrastructure** esté configurado como proyecto predeterminado.
+> ⚠️ Asegúrate de que el proyecto **Horoscope.Infraestructure** esté configurado como proyecto predeterminado.
 
 Ejecuta desde la carpeta raíz del proyecto:
 
 ```bash
-dotnet ef database update --startup-project Horoscope.Api --project Horoscope.Infrastructure
+dotnet ef database update --startup-project Horoscope.Api --project Horoscope.Infraestructure
 ```
 
 Esto creará la base de datos y aplicará todas las migraciones registradas.
