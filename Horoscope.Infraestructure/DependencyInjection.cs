@@ -24,7 +24,7 @@ namespace Horoscope.Infraestructure
             .OrResult(msg => msg.StatusCode == HttpStatusCode.TooManyRequests)
             .WaitAndRetryAsync(3, retry => TimeSpan.FromSeconds(retry * 2));
 
-            services.AddHttpClient<IHoroscopeService, HoroscopeService>(client =>
+            services.AddHttpClient<HttpClientService>(client =>
             {
                 client.BaseAddress = new Uri("https://newastro.vercel.app");
                 client.DefaultRequestHeaders.Accept.Clear();
