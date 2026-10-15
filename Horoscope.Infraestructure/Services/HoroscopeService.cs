@@ -37,11 +37,11 @@ namespace Horoscope.Infraestructure.Services
                 NewAstroRequestDto payload = CreateBodyToAPI(request);
 
                 // Llamada a newastro API
-                var responseBody = GetResponseAPI(payload);
-                var doc = JsonDocument.Parse(responseBody.Result);
+                var responseBody = await GetResponseAPI(payload);
+                var doc = JsonDocument.Parse(responseBody);
 
                 // Insertamos el registro en DB
-                AddRegisterRequestQuery(request, responseBody.Result);
+                await AddRegisterRequestQuery(request, responseBody);
 
                 // Obtenemos la informacion del horoscopo de su porpiedad horoscope
                 var horoscopeText = doc.RootElement.GetProperty("horoscope").GetString() ?? string.Empty;
@@ -58,7 +58,8 @@ namespace Horoscope.Infraestructure.Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logger.LogError(ex, "Error al obtener el horóscopo diario");
+                throw;
             }
         }
 
@@ -114,7 +115,7 @@ namespace Horoscope.Infraestructure.Services
         /// </summary>
         /// <param name="request"></param>
         /// <param name="responseBodyResult"></param>
-        private async void AddRegisterRequestQuery(HoroscopeRequestDto request, string responseBodyResult)
+        private async Task AddRegisterRequestQuery(HoroscopeRequestDto request, string responseBodyResult)
         {
             var query = new HoroscopeQuery
             {
