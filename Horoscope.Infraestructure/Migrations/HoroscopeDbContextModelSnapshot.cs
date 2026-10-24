@@ -64,6 +64,20 @@ namespace Horoscope.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("HoroscopeQueries", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            BirthDate = new DateTime(2000, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateQueried = new DateTime(2026, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "pocho@gmail.com",
+                            Gender = 1,
+                            Lang = "es",
+                            Name = "pocho",
+                            ResponseJson = "",
+                            Sign = "Leo"
+                        });
                 });
 #pragma warning restore 612, 618
         }

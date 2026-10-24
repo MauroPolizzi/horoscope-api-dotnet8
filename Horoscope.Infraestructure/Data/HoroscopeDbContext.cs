@@ -18,6 +18,14 @@ namespace Horoscope.Infraestructure.Data
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Sign).IsRequired().HasMaxLength(50);
             });
+
+            modelBuilder.Entity<HoroscopeQuery>().HasData(
+                new HoroscopeQuery() 
+                { 
+                    Id = 3, Name = "pocho", Sign = "Leo", Email = "pocho@gmail.com",
+                    Gender = Domain.Utils.Gender.Male, ResponseJson = "", BirthDate = new DateTime(2000, 10, 10),
+                    DateQueried = new DateTime(2026, 10, 23)
+                });
         }
     }
 }
